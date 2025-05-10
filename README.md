@@ -37,8 +37,9 @@
 ## 🛠️ **Teknologi yang Digunakan:**
 - **Laravel** sebagai backend framework  
 - **MySQL** untuk manajemen basis data  
+- **Livewire** Front End Symesly real time  
 - **Filament** sebagai admin panel modern dan dinamis  
-- **Bootstrap** untuk desain antarmuka yang responsif  
+- **Tailwind** untuk desain antarmuka yang responsif  
 
 
 
