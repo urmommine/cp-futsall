@@ -79,3 +79,9 @@ Browser runs
  username: admin@email.com
  pass    : 1234
 ```
+
+## Screenshots
+
+### Admin dashboard
+![App Screenshot](https://prnt.sc/VQw8cnF4f8Ai)
+
