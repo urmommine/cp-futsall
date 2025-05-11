@@ -1,8 +1,17 @@
 
+
+
 ## **WIP**‼️‼️‼️
 # CP FUTSAL
 
 
+## KELOMPOK: ?
+
+- ALJAWARI (L200220177)
+- ???
+- ??
+- ?
+---
 
 **CP-FUTSALL** adalah aplikasi pemesanan lapangan futsal yang dirancang untuk mempermudah pengguna dalam melihat jadwal ketersediaan, melakukan booking secara real-time, dan mendapatkan konfirmasi otomatis. Aplikasi ini menawarkan antarmuka yang intuitif dan responsif, sehingga cocok digunakan oleh pengelola lapangan maupun pelanggan.
 
@@ -37,8 +46,9 @@
 ## 🛠️ **Teknologi yang Digunakan:**
 - **Laravel** sebagai backend framework  
 - **MySQL** untuk manajemen basis data  
+- **Livewire** Front End Symesly real time  
 - **Filament** sebagai admin panel modern dan dinamis  
-- **Bootstrap** untuk desain antarmuka yang responsif  
+- **Tailwind** untuk desain antarmuka yang responsif  
 
 
 
@@ -84,4 +94,25 @@ Browser runs
 
 ### Admin dashboard
 ![App Screenshot](https://prnt.sc/VQw8cnF4f8Ai)
+
+
+## License
+
+
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+
+
+## Authors
+
+- [@tabbatyaba](https://www.instagram.com/tabbatyaba)
+
+
+## Support
+
+contact, email jovariteks@gmail.com 
+
+
 
