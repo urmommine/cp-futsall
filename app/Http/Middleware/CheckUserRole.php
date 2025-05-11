@@ -16,9 +16,9 @@ class CheckUserRole
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role == 'user') {
+        if (Auth::check() && auth()->user()->role == 'user') {
             return $next($request);
         }
-        abort(403, 'Unauthorized action.');
+        return redirect('/dashboard')->with('error', 'Akses tidak diizinkan.');
     }
 }
