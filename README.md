@@ -93,7 +93,9 @@ Browser runs
 ## Screenshots
 
 ### Admin dashboard
-![App Screenshot](https://prnt.sc/VQw8cnF4f8Ai)
+![image](https://github.com/user-attachments/assets/1c17171a-5b08-42e7-8bb5-acddea912e47)
+![image](https://github.com/user-attachments/assets/5ee782d3-5edf-490d-85f6-0c6b251659bc)
+
 
 
 ## License
