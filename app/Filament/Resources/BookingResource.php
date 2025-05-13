@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\BookingResource\Pages;
 use App\Filament\Resources\BookingResource\RelationManagers;
 use App\Models\Booking;
+use Doctrine\DBAL\Schema\Column;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -17,7 +18,7 @@ class BookingResource extends Resource
 {
     protected static ?string $model = Booking::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document';
 
     public static function form(Form $form): Form
     {
@@ -42,7 +43,8 @@ class BookingResource extends Resource
                 Forms\Components\TextInput::make('total_harga')
                     ->numeric()
                     ->required()
-                    ->readOnly(),
+                    ->readOnly()
+                    ,
                 Forms\Components\Select::make('status')
                     ->options([
                         'pending' => 'Pending',
@@ -51,17 +53,22 @@ class BookingResource extends Resource
                     ])
                     ->required(),
             ]);
+
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user.name')->searchable(),
-                Tables\Columns\TextColumn::make('lapangan.nama')->searchable(),
-                Tables\Columns\TextColumn::make('jadwal.tanggal')->date(),
+                Tables\Columns\TextColumn::make('user.name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('lapangan.nama')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('jadwal.tanggal')
+                    ->date(),
                 Tables\Columns\TextColumn::make('total_jam'),
-                Tables\Columns\TextColumn::make('total_harga')->money('IDR'),
+                Tables\Columns\TextColumn::make('total_harga')
+                    ->money('IDR'),
                 Tables\Columns\TextColumn::make('status'),
             ])
             ->filters([
