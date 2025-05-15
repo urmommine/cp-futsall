@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
-use App\Models\User;
+use App\Filament\Resources\EventLapanganResource\Pages;
+use App\Filament\Resources\EventLapanganResource\RelationManagers;
+use App\Models\EventLapangan;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,35 +13,26 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class UserResource extends Resource
+class EventLapanganResource extends Resource
 {
-    protected static ?string $model = User::class;
+    protected static ?string $model = EventLapangan::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-user';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                Forms\Components\TextInput::make('nama_organizer')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required()
-                    ->hiddenOn('edit')
-                    ->maxLength(255),
-                Forms\Components\Select::make('role')
-                    ->options([
-                        'admin' => 'Admin',
-                        'user' => 'User',
-                    ])
+                Forms\Components\DatePicker::make('tanggal_event')
                     ->required(),
+                Forms\Components\FileUpload::make('gambar_event')
+                    ->image()
+                    ->directory('event'),
+                Forms\Components\Textarea::make('deskripsi_event')
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -49,15 +40,15 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                Tables\Columns\TextColumn::make('nama_organizer')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime()
+                Tables\Columns\TextColumn::make('tanggal_event')
+                    ->date()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('role')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('deskripsi_event')
+                    ,
+                Tables\Columns\ImageColumn::make('gambar_event')
+                   ,
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -91,9 +82,9 @@ class UserResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            'index' => Pages\ListEventLapangans::route('/'),
+            'create' => Pages\CreateEventLapangan::route('/create'),
+            'edit' => Pages\EditEventLapangan::route('/{record}/edit'),
         ];
     }
 }

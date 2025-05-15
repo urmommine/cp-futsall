@@ -19,6 +19,7 @@
 
      <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('budilanggeng.png') }}" />
+    <script src="//unpkg.com/alpinejs" defer></script>
 
 </head>
 
