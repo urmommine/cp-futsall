@@ -3,7 +3,7 @@
         <!-- Background image -->
         <div class="absolute inset-0">
             <img src="{{ asset('bg-futsal.jpg') }}" alt="Background" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black opacity-90"></div> <!-- Overlay gelap -->
+            <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Overlay gelap -->
         </div>
 
         <!-- Konten utama -->
