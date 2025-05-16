@@ -20,7 +20,7 @@
 
    <!-- Modal Viewer -->
 <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-70 overflow-auto flex items-center justify-center hidden z-50 transition-opacity duration-300 ease-in-out">
-    <div class="relative bg-white rounded-lg p-6 shadow-xl max-w-3xl w-40 mx-4 my-10">
+    <div class="relative bg-white rounded-lg p-6 shadow-xl max-w-3xl w-150 mx-4 my-10">
         <!-- Tombol Close -->
         <button onclick="closeModal()"
                 class="absolute top-3 right-3 text-black bg-red-500 hover:bg-red-600 p-2 rounded-full text-xl font-bold z-20 shadow-md">
@@ -29,7 +29,7 @@
 
         <!-- Gambar dengan transisi -->
         <img id="modalImage" src="" alt="Preview"
-             class="max-w-[80%] max-h-[30vh] object-contain rounded-md shadow-md mx-auto transition-all duration-300 ease-in-out">
+             class="max-w-[60vh] max-h-[120vh] object-contain rounded-md shadow-md mx-auto transition-all duration-300 ease-in-out">
 
         <!-- Tombol Download -->
         <div class="text-center mt-4">
