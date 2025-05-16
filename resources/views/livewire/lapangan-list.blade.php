@@ -1,5 +1,5 @@
 <div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
         @foreach ($lapangans as $lapangan)
         <div class="bg-white rounded-lg shadow-md p-4">
             <img src="{{ Storage::url($lapangan->gambar) }}" alt="{{ $lapangan->nama }}"
