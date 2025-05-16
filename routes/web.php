@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::middleware(['auth', 'user'])->group(function () {
+Route::middleware(['auth', 'user'])->group(callback: function () {
     Route::get('/event', EventList::class)->name(name: 'event.list');
     Route::get('/lapangan', LapanganList::class)->name(name: 'lapangan.list');
     Route::get('/jadwal/{lapanganId}', JadwalPicker::class)->name('jadwal.select');

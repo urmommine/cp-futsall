@@ -24,13 +24,13 @@
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                         <a href="{{ config('variables.mapsUrl') ? config('variables.mapsUrl') : 'https://maps.app.goo.gl/dJf3GueZ847eL9DY6?g_st=com.google.maps.preview.copy' }}"
-                           class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl shadow transition"
-                           target="_blank">
+                            class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl shadow transition"
+                            target="_blank">
                             Lokasi
                         </a>
-                        <a href="https://www.instagram.com/budilanggengfutsalsport"
-                           target="_blank" rel="noopener noreferrer"
-                           class="border border-blue-600 text-white hover:bg-blue-700  px-6 py-3 rounded-xl shadow transition">
+                        <a href="https://www.instagram.com/budilanggengfutsalsport" target="_blank"
+                            rel="noopener noreferrer"
+                            class="border border-blue-600 text-white hover:bg-blue-700  px-6 py-3 rounded-xl shadow transition">
                             Instagram
                         </a>
                     </div>
@@ -50,13 +50,14 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 text-center">
                     @if (session('error'))
-                        <script>
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Akses Tidak Diizinkan...',
-                                text: '{{ session('error') }}',
-                            });
-                        </script>
+                    <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Akses Tidak Diizinkan...',
+                        text: '{{ session('
+                        error ') }}',
+                    });
+                    </script>
                     @endif
                     {{ __("You're logged in!") }}
                 </div>
