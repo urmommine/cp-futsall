@@ -1,19 +1,34 @@
-<div class="bg-white rounded-lg shadow-md p-6">
-    <h2 class="text-2xl font-bold mb-4">Buat Booking untuk {{ $lapangan->nama }}</h2>
-    <p>Tanggal: {{ $jadwal->tanggal }}</p>
-    <p>Jam: {{ $jadwal->jam_mulai }} - {{ $jadwal->jam_selesai }}</p>
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-xl">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800 text-center">
+            Buat Booking untuk {{ $lapangan->nama }}
+        </h2>
 
-    <form wire:submit.prevent="submit" class="mt-4">
-        <div class="mb-4">
-            <label for="totalJam" class="block text-gray-700">Total Jam</label>
-            <input type="number" wire:model.live="totalJam" id="totalJam" class="border rounded w-full p-2" min="1"
-                required>
-            @error('totalJam') <span class="text-red-500">{{ $message }}</span> @enderror
+        <div class="text-center text-gray-600 mb-6">
+            <p><strong>Tanggal:</strong> {{ $jadwal->tanggal }}</p>
+            <p><strong>Jam:</strong> {{ $jadwal->jam_mulai }} - {{ $jadwal->jam_selesai }}</p>
         </div>
-        <div class="mb-4">
-            <label class="block text-gray-700">Total Harga</label>
-            <p class="text-lg font-bold">Rp {{ number_format($this->totalHarga, 0, ',', '.') }}</p>
-        </div>
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Buat Booking</button>
-    </form>
+
+        <form wire:submit.prevent="submit">
+            <div class="mb-4">
+                <label for="totalJam" class="block text-sm font-medium text-gray-700 mb-1">Total Jam</label>
+                <input type="number" wire:model.live="totalJam" id="totalJam"
+                    class="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    min="1" required>
+                @error('totalJam')
+                    <span class="text-sm text-red-500">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Total Harga</label>
+                <p class="text-xl font-bold text-gray-800">Rp {{ number_format($this->totalHarga, 0, ',', '.') }}</p>
+            </div>
+
+            <button type="submit"
+                class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
+                Buat Booking
+            </button>
+        </form>
+    </div>
 </div>
