@@ -47,6 +47,31 @@
             @endif
         </div>
 
+        <div>
+            <x-input-label for="profile_picture" :value="__('Profile Picture')" />
+            
+            @if($user->profile_picture)
+                <div class="mt-2 mb-4">
+                    <img src="{{ Storage::url($user->profile_picture) }}" alt="Profile Picture" class="w-32 h-32 rounded-full object-cover">
+                </div>
+            @endif
+
+            <input
+                type="file"
+                name="profile_picture"
+                id="profile_picture"
+                class="mt-1 block w-full text-sm text-gray-500
+                    file:mr-4 file:py-2 file:px-4
+                    file:rounded-full file:border-0
+                    file:text-sm file:font-semibold
+                    file:bg-violet-50 file:text-violet-700
+                    hover:file:bg-violet-100"
+                accept="image/*"
+            />
+            <x-input-error class="mt-2" :messages="$errors->get('profile_picture')" />
+            <p class="mt-1 text-sm text-gray-500">Maximum file size: 1MB. Supported formats: JPG, PNG, GIF.</p>
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
