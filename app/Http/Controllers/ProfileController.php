@@ -30,6 +30,16 @@ class ProfileController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('profile_picture')) {
+            $file = $request->file('profile_picture');
+            
+            // Debug information
+            \Log::info('File upload attempt', [
+                'original_name' => $file->getClientOriginalName(),
+                'mime_type' => $file->getMimeType(),
+                'size' => $file->getSize(),
+                'extension' => $file->getClientOriginalExtension()
+            ]);
+
             // Delete old profile picture if exists
             if ($user->profile_picture) {
                 $oldPath = storage_path('app/public/' . $user->profile_picture);
@@ -39,7 +49,7 @@ class ProfileController extends Controller
             }
 
             // Store new profile picture
-            $path = $request->file('profile_picture')->store('profile-pictures', 'public');
+            $path = $file->store('profile-pictures', 'public');
             $data['profile_picture'] = $path;
         }
 
