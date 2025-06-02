@@ -33,7 +33,17 @@
                 </td>
                 <td class="border p-2">
                     @if ($booking->payment)
-                        <span>{{ $booking->payment->status }}</span>
+                        @php
+                             $paymentStatus = strtolower($booking->payment->status);
+                             $paymentClass = match($paymentStatus) {
+                                 'verified' => 'text-green-700 bg-green-100',
+                                 'pending' => 'text-red-700 bg-red-100',
+                                 default => 'text-gray-700 bg-gray-100',
+                             };
+                         @endphp
+                         <span class="px-2 py-1 rounded-full text-xs font-semibold {{ $paymentClass }}">
+                             {{ ucfirst($paymentStatus) }}
+                         </span>
                     @else
                         <a href="{{ route('payment.upload', $booking->id) }}"
                            class="text-blue-600 hover:underline">Unggah Bukti</a>
