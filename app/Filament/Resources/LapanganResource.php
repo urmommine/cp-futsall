@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Storage;
 
 class LapanganResource extends Resource
 {
@@ -45,7 +46,10 @@ class LapanganResource extends Resource
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('gambar')
                     ->searchable()
-                    ->circular(),
+                    ->circular()
+                    ->disk('public')
+                    ->visibility('public')
+                    ->url(fn ($record) => Storage::url($record->gambar)),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
