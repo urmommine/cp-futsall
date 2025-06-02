@@ -69,7 +69,7 @@
                 accept="image/*"
             />
             <x-input-error class="mt-2" :messages="$errors->get('profile_picture')" />
-            <p class="mt-1 text-sm text-gray-500">Maximum file size: 1MB. Supported formats: JPG, PNG, GIF.</p>
+            <p class="mt-1 text-sm text-gray-500">Maximum file size: 4MB. Supported formats: JPG, PNG, GIF.</p>
         </div>
 
         <div class="flex items-center gap-4">
