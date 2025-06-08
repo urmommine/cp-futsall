@@ -5,6 +5,8 @@ namespace App\Livewire;
 use App\Models\Booking;
 use App\Models\Jadwal;
 use App\Models\Lapangan;
+use App\Models\User;
+use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -43,6 +45,13 @@ class BookingForm extends Component
         Jadwal::find($this->jadwalId)->update(['status' => 'dipesan']);
 
         session()->flash('message', 'Booking berhasil dibuat!');
+
+        Notification::make()
+            ->success()
+            ->title('New Booking')
+            ->body(Auth::user()->name . ' memesan lapangan ' . Lapangan::find($this->lapanganId)->name)
+            ->sendToDatabase(User::where('role', 'admin')->get());
+
         return redirect()->route('booking.history');
     }
 

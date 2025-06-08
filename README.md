@@ -67,6 +67,8 @@ Install dependencies
 ```bash
   cp .env.example .env
   composer install
+  php artisan migrate
+  php artisan db:seed
   npm install && npm run dev
   php artisan key:generate
 
@@ -76,6 +78,13 @@ Jalankan server
 
 ```bash
   php artisan serve
+  php artisan queue:listen
+```
+
+Optimasi rendering UI
+
+```bash
+  php artisan optimize
 ```
 
 Browser runs
