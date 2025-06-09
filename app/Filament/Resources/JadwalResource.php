@@ -47,7 +47,11 @@ class JadwalResource extends Resource
                 Tables\Columns\TextColumn::make('tanggal')->date(),
                 Tables\Columns\TextColumn::make('jam_mulai'),
                 Tables\Columns\TextColumn::make('jam_selesai'),
-                Tables\Columns\TextColumn::make('status'),
+                Tables\Columns\SelectColumn::make('status')
+                    ->options([
+                        'tersedia' => 'Tersedia',
+                        'dipesan' => 'Dipesan',
+                    ])
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('status')

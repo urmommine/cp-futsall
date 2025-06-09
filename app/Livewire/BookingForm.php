@@ -6,9 +6,12 @@ use App\Models\Booking;
 use App\Models\Jadwal;
 use App\Models\Lapangan;
 use App\Models\User;
+use App\Filament\Resources\BookingResource;
+use Filament\Notifications\Actions\Action;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+
 
 class BookingForm extends Component
 {
@@ -46,10 +49,20 @@ class BookingForm extends Component
 
         session()->flash('message', 'Booking berhasil dibuat!');
 
+        // Get the lapangan data before creating notification
+        $lapangan = Lapangan::find($this->lapanganId);
+
         Notification::make()
             ->success()
+            ->icon("heroicon-o-shopping-cart")
             ->title('New Booking')
-            ->body(Auth::user()->name . ' memesan lapangan ' . Lapangan::find($this->lapanganId)->name)
+            ->body(Auth::user()->name . ' memesan lapangan ' . $lapangan->nama)
+            ->actions([
+                Action::make("view")
+                ->button()
+                ->url(BookingResource::getUrl('edit', ['record' => $booking])),
+               
+            ])
             ->sendToDatabase(User::where('role', 'admin')->get());
 
         return redirect()->route('booking.history');
