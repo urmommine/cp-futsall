@@ -96,6 +96,12 @@
             <x-responsive-nav-link :href="route('lapangan.list')" :active="request()->routeIs('lapangan.list')">
                 {{ __('Booking') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('event.list')" :active="request()->routeIs('event.list')">
+                {{ __('Info Event') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('booking.history')" :active="request()->routeIs('booking.history')">
+                {{ __('Booking History') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
