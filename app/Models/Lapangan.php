@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lapangan extends Model
 {
-    protected $fillable = ['nama', 'deskripsi', 'gambar'];
+    protected $fillable = ['nama', 'deskripsi', 'gambar', 'harga_per_jam'];
 
     public function jadwals()
     {

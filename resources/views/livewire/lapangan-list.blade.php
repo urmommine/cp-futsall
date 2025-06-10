@@ -6,8 +6,8 @@
     </div>
 
     <!-- Konten utama -->
-    <div class="relative z-10 px-4 py-10">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+    <div class="relative z-10 px-2 py-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
             @foreach ($lapangans as $lapangan)
             <div class="bg-blue-100 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-0 flex flex-col overflow-hidden group border border-gray-200 max-w-md mx-auto">
                 <div class="relative">
@@ -24,6 +24,11 @@
                     <p class="text-gray-600 text-base mb-3 flex-1">
                         {{ \Illuminate\Support\Str::limit($lapangan->deskripsi, 120) }}
                     </p>
+                    <div class="mb-3">
+                        <p class="text-lg font-semibold text-green-600">
+                            Rp {{ number_format($lapangan->harga_per_jam, 0, ',', '.') }} / jam
+                        </p>
+                    </div>
                     <a href="{{ route('jadwal.select', $lapangan->id) }}"
                         class="mt-auto inline-block bg-gradient-to-r from-blue-600 to-blue-400 text-white font-semibold px-6 py-2 rounded-lg shadow hover:from-blue-700 hover:to-blue-500 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300 text-base">
                         <svg class="inline-block w-5 h-5 mr-2 -mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">

@@ -15,6 +15,7 @@
             <div class="text-center text-gray-600 mb-6">
                 <p><strong>Tanggal:</strong> {{ $jadwal->tanggal }}</p>
                 <p><strong>Jam:</strong> {{ $jadwal->jam_mulai }} - {{ $jadwal->jam_selesai }}</p>
+                <p><strong>Harga per Jam:</strong> Rp {{ number_format($lapangan->harga_per_jam, 0, ',', '.') }}</p>
             </div>
 
             <form wire:submit.prevent="submit">

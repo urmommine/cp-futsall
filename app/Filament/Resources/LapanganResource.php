@@ -35,6 +35,13 @@ class LapanganResource extends Resource
                     ->directory('lapangan')
                     ->maxSize(2048)
                     ->required(),
+                Forms\Components\TextInput::make('harga_per_jam')
+                    ->numeric()
+                    ->required()
+                    ->prefix('Rp')
+                    ->minValue(0)
+                    ->default(50000)
+                    ->helperText('Harga per jam dalam rupiah'),
             ]);
     }
 
@@ -50,6 +57,10 @@ class LapanganResource extends Resource
                     ->disk('public')
                     ->visibility('public')
                     ->url(fn ($record) => Storage::url($record->gambar)),
+                Tables\Columns\TextColumn::make('harga_per_jam')
+                    ->money('IDR')
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

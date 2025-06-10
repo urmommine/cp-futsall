@@ -11,9 +11,10 @@
             <div class="max-w-7xl w-full grid md:grid-cols-2 items-center gap-12 text-white">
                 <!-- Text Section -->
                 <div class="max-w-xl md:pl-12 text-center md:text-left animate-fade-in-up">
-                    <p class="text-pink-400 font-semibold text-lg mb-3 tracking-wide drop-shadow-lg">
+                    <p class="text-blue-400 font-semibold text-lg mb-3 tracking-wide drop-shadow-lg">
                         Halo <span class="font-bold">{{ Auth::user()->name }}</span> 👋, Selamat Datang
                     </p>
+                    
                     <h1 class="text-4xl md:text-5xl font-extrabold mb-5 leading-tight drop-shadow-xl">
                         Jaga Kebugaran Diri <br>
                         Bersama <span class="text-blue-400">Budi Langgeng Futsal</span>

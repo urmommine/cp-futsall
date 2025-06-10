@@ -27,7 +27,8 @@ class BookingForm extends Component
 
     public function getTotalHargaProperty()
     {
-        return (int)$this->totalJam * 50000;
+        $lapangan = Lapangan::find($this->lapanganId);
+        return (int)$this->totalJam * $lapangan->harga_per_jam;
     }
 
     public function submit()

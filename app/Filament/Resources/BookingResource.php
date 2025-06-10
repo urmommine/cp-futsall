@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\BookingResource\Pages;
 use App\Filament\Resources\BookingResource\RelationManagers;
 use App\Models\Booking;
+use App\Models\Lapangan;
 use Doctrine\DBAL\Schema\Column;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -29,7 +30,16 @@ class BookingResource extends Resource
                     ->required(),
                 Forms\Components\Select::make('lapangan_id')
                     ->relationship('lapangan', 'nama')
-                    ->required(),
+                    ->required()
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        if ($state) {
+                            $lapangan = Lapangan::find($state);
+                            if ($lapangan) {
+                                $set('total_harga', $lapangan->harga_per_jam);
+                            }
+                        }
+                    }),
                 Forms\Components\Select::make('jadwal_id')
                     ->relationship('jadwal', 'tanggal')
                     ->required(),
@@ -37,14 +47,20 @@ class BookingResource extends Resource
                     ->numeric()
                     ->required()
                     ->reactive()
-                    ->afterStateUpdated(function ($state, callable $set) {
-                        $set('total_harga', $state * 50000);
+                    ->afterStateUpdated(function ($state, callable $set, $get) {
+                        $lapanganId = $get('lapangan_id');
+                        if ($lapanganId && $state) {
+                            $lapangan = Lapangan::find($lapanganId);
+                            if ($lapangan) {
+                                $set('total_harga', $state * $lapangan->harga_per_jam);
+                            }
+                        }
                     }),
                 Forms\Components\TextInput::make('total_harga')
                     ->numeric()
                     ->required()
                     ->readOnly()
-                    ,
+                    ->prefix('Rp'),
                 Forms\Components\Select::make('status')
                     ->options([
                         'pending' => 'Pending',
@@ -69,7 +85,12 @@ class BookingResource extends Resource
                 Tables\Columns\TextColumn::make('total_jam'),
                 Tables\Columns\TextColumn::make('total_harga')
                     ->money('IDR'),
-                Tables\Columns\TextColumn::make('status'),
+                Tables\Columns\SelectColumn::make('status')
+                    ->options([
+                        'pending' => 'Pending',
+                        'confirmed' => 'Confirmed',
+                        'canceled' => 'Canceled',
+                    ]),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('status')
