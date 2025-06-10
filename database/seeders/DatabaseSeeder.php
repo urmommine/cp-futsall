@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
 
 
         User::factory()->create([
-            'name' => 'bay',
-            'email' => 'user@gmail.com',
+            'name' => 'ardiyan',
+            'email' => 'budigank@gmail.com',
             'password' => Hash::make('password'),
-            'role' => 'user' // tambahkan ini
+            'role' => 'admin' // tambahkan ini
         ]);
     }
 }
